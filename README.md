@@ -1,5 +1,4 @@
 🗳️ Election Assistant
-
 Election Process Education App for Indian Citizens
 
 A full-stack web app that explains how elections work in India with an AI-powered assistant.
@@ -7,55 +6,49 @@ A full-stack web app that explains how elections work in India with an AI-powere
 ✨ Features
 🤖 AI Chat Assistant — Gemini-powered election help
 📋 Election Guide — 6-step interactive timeline
-🏛️ Official Resources — NVSP, ECI, Voter apps
+🏛️ Official Resources — NVSP, ECI, voter apps
 ✅ Eligibility Checker — Age + citizenship validation
 📍 Booth Locator — Pincode-based lookup (mock)
-📱 Responsive UI — Mobile → Desktop
+📱 Responsive UI — Mobile to desktop
 🛠️ Tech Stack
-
 Frontend
-
 React 19
 TypeScript
 Tailwind CSS
 Framer Motion
-
 Backend
-
 Node.js
 Express
 Helmet
 express-rate-limit
-
 AI
-
 Google Gemini (@google/genai)
-
 Build & Deploy
-
 Vite
 Docker
 Google Cloud Run
 🚀 Local Setup
-# clone
+# Clone repository
 git clone https://github.com/YOUR_USERNAME/election-assistant.git
 cd election-assistant
 
-# install
+# Install dependencies
 npm install
 
-# env
+# Setup environment
 cp .env.example .env
-# add GEMINI_API_KEY
+# Add GEMINI_API_KEY
 
-# run
+# Run app
 npm run dev
 
 👉 http://localhost:3000
 
 🐳 Docker
+# Build image
 docker build -t election-assistant .
 
+# Run container
 docker run -p 8080:8080 \
   -e GEMINI_API_KEY=your_key_here \
   election-assistant
@@ -71,7 +64,7 @@ gcloud run deploy election-assistant \
   --region asia-south1 \
   --allow-unauthenticated \
   --set-env-vars GEMINI_API_KEY=your_key_here
-📁 Structure
+📁 Project Structure
 election-assistant/
 ├── src/
 │   ├── components/
@@ -100,10 +93,12 @@ MIT
 ⚠️ Disclaimer
 
 Educational app only.
-Official sites: https://eci.gov.in
- • https://nvsp.in
+Official sites:
 
-Helpline: 1950
+https://eci.gov.in
+https://nvsp.in
+
+📞 Helpline: 1950
 
 👨‍💻 Developed By
 
