@@ -1,23 +1,23 @@
-🗳️ Election Assistant — Election Process Education App
+🗳️ Election Assistant
 
-A full-stack, production-ready web application that educates Indian citizens about the election process.
-Built using modern web technologies with an AI-powered assistant for guidance.
+Election Process Education App for Indian Citizens
+
+A full-stack web app that explains how elections work in India with an AI-powered assistant.
 
 ✨ Features
-Feature	Description
-🤖 AI Chat Assistant	Gemini-powered chatbot for answering election-related queries
-📋 Step-by-Step Guide	Interactive 6-stage election process timeline
-🏛️ Official Resources	Quick access to NVSP, ECI, Voter Helpline App, cVIGIL
-✅ Eligibility Checker	Validates voter eligibility (age + citizenship)
-📍 Booth Locator	Find polling station using pincode (mock system)
-📱 Responsive Design	Works seamlessly across mobile, tablet, and desktop
+🤖 AI Chat Assistant — Gemini-powered election help
+📋 Election Guide — 6-step interactive timeline
+🏛️ Official Resources — NVSP, ECI, Voter apps
+✅ Eligibility Checker — Age + citizenship validation
+📍 Booth Locator — Pincode-based lookup (mock)
+📱 Responsive UI — Mobile → Desktop
 🛠️ Tech Stack
 
 Frontend
 
 React 19
 TypeScript
-Tailwind CSS v4
+Tailwind CSS
 Framer Motion
 
 Backend
@@ -29,135 +29,81 @@ express-rate-limit
 
 AI
 
-Google Gemini 2.0 Flash (@google/genai)
+Google Gemini (@google/genai)
 
-Build & Deployment
+Build & Deploy
 
-Vite 6
+Vite
 Docker
 Google Cloud Run
-🚀 Local Development
-📌 Prerequisites
-Node.js 20+
-Gemini API Key → https://aistudio.google.com/app/apikey
-⚙️ Setup
-# Clone repository
+🚀 Local Setup
+# clone
 git clone https://github.com/YOUR_USERNAME/election-assistant.git
 cd election-assistant
 
-# Install dependencies
+# install
 npm install
 
-# Setup environment variables
+# env
 cp .env.example .env
-# Add your GEMINI_API_KEY inside .env
+# add GEMINI_API_KEY
 
-# Start development server
+# run
 npm run dev
 
-👉 App runs at: http://localhost:3000
+👉 http://localhost:3000
 
-🐳 Docker Setup
-# Build Docker image
+🐳 Docker
 docker build -t election-assistant .
 
-# Run container
-docker run -p 8080:8080 -e GEMINI_API_KEY=your_key_here election-assistant
+docker run -p 8080:8080 \
+  -e GEMINI_API_KEY=your_key_here \
+  election-assistant
 
-👉 Visit: http://localhost:8080
+👉 http://localhost:8080
 
-☁️ Deploy to Google Cloud Run
-🔧 One-Time Setup
-# Install Google Cloud CLI
-https://cloud.google.com/sdk/docs/install
-
-# Authenticate
+☁️ Deploy (Cloud Run)
 gcloud auth login
-
-# Set project
 gcloud config set project YOUR_PROJECT_ID
 
-# Enable APIs
-gcloud services enable run.googleapis.com cloudbuild.googleapis.com
-🚀 Deployment Options
-Option 1: Deploy from Source
 gcloud run deploy election-assistant \
   --source . \
-  --platform managed \
-  --region asia-south1 \
-  --allow-unauthenticated \
-  --set-env-vars GEMINI_API_KEY=your_key_here \
-  --memory 512Mi \
-  --cpu 1 \
-  --min-instances 0 \
-  --max-instances 10 \
-  --port 8080
-Option 2: Deploy via Docker Image
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/election-assistant
-
-gcloud run deploy election-assistant \
-  --image gcr.io/YOUR_PROJECT_ID/election-assistant \
-  --platform managed \
   --region asia-south1 \
   --allow-unauthenticated \
   --set-env-vars GEMINI_API_KEY=your_key_here
-🌍 Recommended Region
-
-asia-south1 (Mumbai) — best latency for Indian users
-
-📁 Project Structure
+📁 Structure
 election-assistant/
 ├── src/
 │   ├── components/
-│   │   ├── ChatBot.tsx
-│   │   ├── ElectionGuide.tsx
-│   │   ├── Resources.tsx
-│   │   └── PollingBoothLocator.tsx
 │   ├── hooks/
-│   │   └── useChat.ts
 │   ├── lib/
-│   │   └── utils.ts
-│   ├── constants.ts
 │   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
+│   └── main.tsx
 ├── server.ts
 ├── Dockerfile
-├── vite.config.ts
-├── tsconfig.json
-├── tsconfig.server.json
 └── .env.example
 🔒 Security
-Helmet for HTTP security headers
-Rate limiting:
-API → 50 requests / 15 minutes
-Chat → 15 requests / minute
-Input validation & sanitization
-Non-root Docker user
-JSON body size limit (10kb)
-Content Security Policy (CSP)
+Helmet headers
+Rate limiting
+Input validation
+Non-root Docker
+CSP enabled
 ♿ Accessibility
-Semantic HTML structure
-ARIA labels for accessibility
-aria-live for dynamic updates
-Keyboard navigation support
-Error alerts with role="alert"
-Loading states with aria-busy
+Semantic HTML
+ARIA labels
+Keyboard navigation
+Screen reader support
 📜 License
 
-MIT License
-
-Built for the Google Cloud + Gemini AI Challenge
+MIT
 
 ⚠️ Disclaimer
 
-This is an educational application.
-For official voter services, visit:
+Educational app only.
+Official sites: https://eci.gov.in
+ • https://nvsp.in
 
-https://eci.gov.in
-https://nvsp.in
-
-📞 Helpline: 1950
+Helpline: 1950
 
 👨‍💻 Developed By
 
