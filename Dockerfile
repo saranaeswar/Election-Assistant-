@@ -5,7 +5,9 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci && npm install @rollup/rollup-linux-x64-musl --no-save
+RUN npm ci && \
+    npm install @rollup/rollup-linux-x64-musl --no-save && \
+    npm install lightningcss-linux-x64-musl --no-save
 
 COPY . .
 
