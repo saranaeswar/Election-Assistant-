@@ -3,16 +3,12 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files first for better layer caching
 COPY package*.json ./
 
-# Install all deps (including dev deps for build)
-RUN npm ci --frozen-lockfile
+RUN npm ci
 
-# Copy source
 COPY . .
 
-# Build frontend (Vite) + server (tsc)
 RUN npm run build
 
 # ── Stage 2: Production ────────────────────────────────────────────────────────
@@ -23,19 +19,14 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=8080
 
-# Install all deps (tsx needed at runtime)
 COPY package*.json ./
-RUN npm ci --frozen-lockfile && npm cache clean --force
+RUN npm install --omit=dev && npm install tsx && npm cache clean --force
 
-# Copy built artifacts
 COPY --from=builder /app/dist ./dist
-# Copy server source (tsx runs it directly)
 COPY server.ts .
 
-# Non-root user for security
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nextjs -u 1001
-
 RUN chown -R nextjs:nodejs /app
 
 USER nextjs
